@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartApp Connect</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+
+ <!-- Dark Mode Toggle -->
+
+
+    <!-- Scroll to Top Button -->
+    <button class="scroll-top" onclick="scrollToTop()" title="Back to Top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <main>
+        <!-- Navbar -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo-text">
+                    <a href="#home" class="logo">
+                        <img src="log.png" class="logo-img" alt="Logo">
+                    </a>
+                    <p class="name">SmartApp Connect</p>
+                </div>
+                <div class="middle-section">
+                    <ul class="nav-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#opportunities">Opportunities</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="theme-icon">
+                    <button class="theme-toggle" id="themeToggle" title="Toggle Dark Mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </div>
+
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <header id="home" class="hero">
+            <div class="container">
+                <h1 class="animate-fade">Simplify Your Applications</h1>
+                <p class="animate-slide">Get the latest updates, send your documents, and let us handle the rest!</p>
+                <div class="hero-buttons">
+                    <a href="#about" class="btn">Learn More</a>
+                    <button class="btn btn-primary" onclick="showSignup()">Get Started</button>
+
+                </div>
+            </div>
+        </header>
+         <!-- About Section -->
+<section id="about" class="about">
+    <div class="container">
+        <h2 class="animate-fade">About Us</h2>
+            <p>SmartApp Connect is your trusted partner in simplifying application processes for universities,
+                jobs, and other online services. We aim to make every step of your application journey seamless and stress-free.</p>
+    
+        <div class="icon-grid">
+            <div class="icon-box animate-slide">
+                <i class="fas fa-users"></i>
+                <p>Connect with Experts</p>
+            </div>
+            <div class="icon-box animate-slide">
+                <i class="fas fa-file-alt"></i>
+                <p>Submit Documents Effortlessly</p>
+            </div>
+            <div class="icon-box animate-slide">
+                <i class="fas fa-calendar-check"></i>
+                <p>Stay Updated</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+ <!-- Services Section -->
+ <section id="services" class="services">
+    <div class="container">
+        <h2 class="animate-fade">Our Services</h2>
+        <div class="service-grid">
+            <div class="service-item animate-slide">
+                <i class="fas fa-briefcase"></i>
+                <h3>Job Applications</h3>
+                <p>Submit your job applications with ease.</p>
+            </div>
+            <div class="service-item animate-slide">
+                <i class="fas fa-university"></i>
+                <h3>University Applications</h3>
+                <p>We handle your university applications smoothly.</p>
+            </div>
+            <div class="service-item animate-slide">
+                <i class="fas fa-file-upload"></i>
+                <h3>Document Upload</h3>
+                <p>Easily upload your documents and track your applications.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Signup Section -->
+<section id="signup-section" class="hidden">
+    <div class="container">
+        <h2>Sign Up</h2>
+        <form id="signup-form">
+            <label for="signup-name">Name:</label>
+            <input type="text" id="signup-name" placeholder="Your Name" required>
+
+            <label for="signup-email">Email:</label>
+            <input type="email" id="signup-email" placeholder="Your Email" required>
+
+            <label for="signup-password">Password:</label>
+            <input type="password" id="signup-password" placeholder="Your Password" required>
+
+            <button type="button" class="btn btn-primary" onclick="signup()">Sign Up</button>
+            <p>Already have an account? <a href="#" onclick="showLogin()">Log In</a></p>
+        </form>
+    </div>
+</section>
+
+<!-- Login Section -->
+<section id="login-section" class="hidden">
+    <div class="container">
+        <h2>Log In</h2>
+        <form id="login-form">
+            <label for="login-email">Email:</label>
+            <input type="email" id="login-email" placeholder="Your Email" required>
+
+            <label for="login-password">Password:</label>
+            <input type="password" id="login-password" placeholder="Your Password" required>
+
+            <button type="button" class="btn btn-primary" onclick="login()">Log In</button>
+            <p>Don't have an account? <a href="#" onclick="showSignup()">Sign Up</a></p>
+        </form>
+    </div>
+</section>
+
+
+<!-- Opportunities Section -->
+<section id="opportunities" class="opportunities">
+    <div class="container">
+        <h2 class="animate-fade">Opportunities</h2>
+        <p>Explore various opportunities in the academic and professional fields.</p>
+        <div class="opportunity-cards">
+            <div class="card animate-slide">
+                <img src="job.jpg" alt="Job" class="opportunity-img">
+                <h3>Job Vacancies</h3>
+                <p>Find the best job opportunities available in your area.</p>
+            </div>
+            <div class="card animate-slide">
+                <img src="scholarship.jpg" alt="Scholarship" class="opportunity-img">
+                <h3>Scholarships</h3>
+                <p>Discover scholarships that will help you continue your education.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Opportunities Section -->
+    <section id="opportunities" class="opportunities">
+        <div class="container">
+            <h2>Pending Opportunities</h2>
+            <ul>
+                <li>University X Application Deadline: November 30</li>
+                <li>Company Y Internship Deadline: December 15</li>
+                <li>Scholarship Z Deadline: January 10</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+<section id="contact" class="contact">
+    <div class="container">
+        <h2 class="animate-fade">Contact Me</h2>
+        <p>If you have any questions, feel free to get in touch with Me.</p>
+        <div class="contact-info animate-slide">
+            <i class="fas fa-phone"></i>
+            <p>+25 0787846344</p>
+        </div>
+        <div class="contact-info animate-slide">
+            <i class="fas fa-envelope"></i>
+            <p>info@smartapp.com</p>
+        </div>
+    </div>
+    <div class="container-form">
+        <h2>Contact Me via to Fill this Form</h2>
+        <form>
+            <label for="name">Name:</label>
+            <input type="text" id="name" placeholder="Your Name" required>
+            <label for="email">Email:</label>
+            <input type="email" id="email" placeholder="Your Email" required>
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" placeholder="Your Phone Number" required>
+            <label for="message">Message:</label>
+            <textarea id="message" rows="5" placeholder="Your Message"></textarea>
+            <button type="submit" class="btn btn-primary">Send Message</button>
+        </form>
+</section>
+
+        <!-- Additional Content (About, Services, Opportunities, Contact) -->
+        <!-- Include other sections here as they are in your existing file -->
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="social-icons">
+            <a href="https://wa.me/" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://twitter.com" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
+            <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="container">
+            <p>&copy; 2024 SmartApp Connect. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+       // Dark Mode Toggle
+       const themeToggle = document.getElementById('themeToggle');
+        themeToggle.addEventListener('click', () => {
+            document.body.classList.toggle('dark-theme');
+            const icon = themeToggle.querySelector('i');
+            icon.classList.toggle('fa-moon');
+            icon.classList.toggle('fa-sun');
+        });
+
+        // Scroll to Top Button
+        const scrollTopButton = document.querySelector('.scroll-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 200) {
+                scrollTopButton.style.display = 'block';
+            } else {
+                scrollTopButton.style.display = 'none';
+            }
+        });
+
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+
+</html>
