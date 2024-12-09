@@ -1,48 +1,72 @@
-// Updated speakSection function
+// Check Web Speech API support
+if (!('speechSynthesis' in window)) {
+    alert('Sorry, your browser does not support speech synthesis!');
+}
+
+// Translations for navbar links
+const translations = {
+    en: {
+        home: "Welcome to the Home section.",
+        about: "Learn more about us in the About section.",
+        services: "Explore our Services.",
+        opportunities: "Discover Opportunities.",
+        contact: "Get in touch with us in the Contact section."
+    },
+    rw: {
+        home: "Murakaza neza muri Agace ka mbere.",
+        about: "Menya byinshi kuri twe mu Gice cya About.",
+        services: "Reba serivisi zacu.",
+        opportunities: "Menya amahirwe ahari.",
+        contact: "Twandikire mu gice cy'Itumanaho."
+    }
+};
+
+// Set the current language (default to English)
+let currentLanguage = "en";
+
+// Function to speak a section
 function speakSection(sectionId) {
+    console.log(`Attempting to speak section: ${sectionId}`); // Debugging log
+
     const text = translations[currentLanguage][sectionId];
-    if (!text) return; // Ensure text exists for the given section
+    if (!text) {
+        console.warn(`No translation found for section: ${sectionId}`);
+        return;
+    }
 
     // Stop any ongoing speech
     window.speechSynthesis.cancel();
 
+    // Create a new utterance
     const speech = new SpeechSynthesisUtterance(text);
-
-    // Set the language for the speech
-    switch (currentLanguage) {
-        case "en":
-            speech.lang = "en-US";
-            break;
-        case "rw":
-            speech.lang = "rw-RW"; // Note: Limited support for Kinyarwanda
-            break;
-    
-    }
+    speech.lang = currentLanguage === "rw" ? "rw-RW" : "en-US";
+    console.log(`Speaking text: "${text}" in language: ${speech.lang}`);
 
     // Speak the text
     window.speechSynthesis.speak(speech);
 }
 
-// Add event listeners for hover, click, and mouseleave
+// Add event listeners to navbar links
 document.querySelectorAll('.nav-links a').forEach(link => {
+    const sectionId = link.getAttribute('href').substring(1); // Extract section ID
+
     // Speak on hover
     link.addEventListener('mouseenter', () => {
-        const sectionId = link.getAttribute('href').substring(1); // Extract the section ID
         speakSection(sectionId);
     });
 
     // Stop speaking on mouseleave
     link.addEventListener('mouseleave', () => {
-        window.speechSynthesis.cancel(); // Stop any ongoing speech
+        window.speechSynthesis.cancel();
     });
 
     // Speak on click
     link.addEventListener('click', (e) => {
-        e.preventDefault(); // Prevent default navigation for demo purposes
-        const sectionId = link.getAttribute('href').substring(1);
+        e.preventDefault(); // Prevent default navigation
         speakSection(sectionId);
     });
 });
+
 // Show/Hide Signup Form
 function showSignup() {
     document.getElementById("signup-section").classList.remove("hidden");
@@ -75,11 +99,13 @@ function validateSignupForm() {
     return true;
 }
 
-const slider = document.querySelector('.slider');
-slider.addEventListener('wheel', (e) => {
+// Slider scrolling
+document.querySelector('.slider').addEventListener('wheel', (e) => {
     e.preventDefault();
-    slider.scrollLeft += e.deltaY * 2; // Adjust scroll speed
+    e.currentTarget.scrollLeft += e.deltaY * 2; // Adjust scroll speed
 });
+
+// Smooth scrolling to sections
 function scrollToSection(event, sectionId) {
     event.preventDefault(); // Prevent the default anchor behavior
     const section = document.getElementById(sectionId);
@@ -87,24 +113,12 @@ function scrollToSection(event, sectionId) {
         section.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 }
-// Hide both forms
+
+// Hide forms
 function hideForms() {
     document.getElementById('signup-section').classList.add('hidden');
     document.getElementById('login-section').classList.add('hidden');
 }
-
-// Example: Add this to other buttons like "Learn More"
-document.querySelector('.btn:not(.btn-primary)').addEventListener('click', hideForms);
-// Add an event listener for the scroll event
-window.addEventListener('scroll', function() {
-    const heroSection = document.getElementById('home');
-    const heroPosition = heroSection.getBoundingClientRect().top;
-
-    // When the user scrolls to the hero section, add an animation class
-    if (heroPosition < window.innerHeight / 1.2) {
-        heroSection.classList.add('animate-fade');
-    }
-});
 
 // Toggle Dark Mode
 function toggleTheme() {
@@ -138,40 +152,29 @@ window.addEventListener("DOMContentLoaded", () => {
         icon.classList.replace("fa-sun", "fa-moon");
     }
 });
-// Function to show the Signup form
-function showSignup() {
-    document.getElementById('signup-section').classList.remove('hidden');
-    document.getElementById('login-section').classList.add('hidden');
+
+// Voice Input
+function listenToVoice(inputId) {
+    const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+    recognition.lang = 'en-US';
+    recognition.start();
+
+    recognition.onresult = (event) => {
+        const text = event.results[0][0].transcript;
+        document.getElementById(inputId).value = text;
+    };
+
+    recognition.onerror = (event) => {
+        alert('Voice recognition failed. Please try again.');
+    };
 }
 
-// Function to show the Login form
-function showLogin() {
-    document.getElementById('login-section').classList.remove('hidden');
-    document.getElementById('signup-section').classList.add('hidden');
-}
-
-// Placeholder function for signup (connect to backend later)
+// Signup Function
 function signup() {
-    const name = document.getElementById('signup-name').value;
-    const email = document.getElementById('signup-email').value;
-    const password = document.getElementById('signup-password').value;
-
-    if (name && email && password) {
-        alert(`Welcome, ${name}! You have successfully signed up.`);
-        showLogin(); // Show login form after signup
-    } else {
-        alert('Please fill in all fields.');
-    }
+    alert('Signup function triggered!');
 }
 
-// Placeholder function for login (connect to backend later)
+// Login Function
 function login() {
-    const email = document.getElementById('login-email').value;
-    const password = document.getElementById('login-password').value;
-
-    if (email && password) {
-        alert('Login successful!'); // Replace with backend authentication
-    } else {
-        alert('Please enter your email and password.');
-    }
+    alert('Login function triggered!');
 }

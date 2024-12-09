@@ -11,10 +11,7 @@
 
 <body>
 
- <!-- Dark Mode Toggle -->
-
-
-    <!-- Scroll to Top Button -->
+    <!-- Dark Mode Toggle -->
     <button class="scroll-top" onclick="scrollToTop()" title="Back to Top">
         <i class="fas fa-chevron-up"></i>
     </button>
@@ -31,11 +28,11 @@
                 </div>
                 <div class="middle-section">
                     <ul class="nav-links">
-                        <li><a href="#home">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#services">Services</a></li>
-                        <li><a href="#opportunities">Opportunities</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        <li><a href="#home" id="home-link">Home</a></li>
+                        <li><a href="#about" id="about-link">About</a></li>
+                        <li><a href="#services" id="services-link">Services</a></li>
+                        <li><a href="#opportunities" id="opportunities-link">Opportunities</a></li>
+                        <li><a href="#contact" id="contact-link">Contact</a></li>
                     </ul>
                 </div>
                 <div class="theme-icon">
@@ -43,172 +40,196 @@
                         <i class="fas fa-moon"></i>
                     </button>
                 </div>
-
             </div>
         </nav>
 
         <!-- Hero Section -->
         <header id="home" class="hero">
             <div class="container">
-                <h1 class="animate-fade">Simplify Your Applications</h1>
-                <p class="animate-slide">Get the latest updates, send your documents, and let us handle the rest!</p>
-                <div class="hero-buttons">
-                    <a href="#about" class="btn">Learn More</a>
-                    <button class="btn btn-primary" onclick="showSignup()">Get Started</button>
-
+                <div class="container-imgbg">
+                    <img style="display: flex; width: 100%; height: 50%;" src="homepage.png" alt="">
+                    <h1 class="animate-fade">Simplify Your Applications</h1>
+                    <p class="animate-slide">Get the latest updates, send your documents, and let us handle the rest!</p>
+                    <div class="hero-buttons">
+                        <a href="#about" class="btn">Learn More</a>
+                        <button class="btn btn-primary" onclick="showSignupForm()">Get Started</button>
+                    </div>
                 </div>
             </div>
         </header>
-         <!-- About Section -->
-<section id="about" class="about">
-    <div class="container">
-        <h2 class="animate-fade">About Us</h2>
-            <p>SmartApp Connect is your trusted partner in simplifying application processes for universities,
-                jobs, and other online services. We aim to make every step of your application journey seamless and stress-free.</p>
-    
-        <div class="icon-grid">
-            <div class="icon-box animate-slide">
-                <i class="fas fa-users"></i>
-                <p>Connect with Experts</p>
+
+        <!-- Signup/Login Section (hidden initially) -->
+        <section id="auth-section" class="auth-section" style="display: none;">
+            <div class="container">
+                <h2 id="auth-header">Sign Up</h2>
+                
+                <!-- Signup Form -->
+                <div id="signup-form">
+                    <form action="#" method="POST">
+                        <label for="username">Username:</label>
+                        <input type="text" id="username" placeholder="Enter your username" required>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" placeholder="Enter your email" required>
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" placeholder="Enter your password" required>
+                        <button type="submit" class="btn btn-primary">Sign Up</button>
+                    </form>
+                    <p>Already have an account? <a href="javascript:void(0);" onclick="showLogin()">Login</a></p>
+                </div>
+                
+                <!-- Login Form (hidden by default) -->
+                <div id="login-form" style="display: none;">
+                    <form action="#" method="POST">
+                        <label for="login-email">Email:</label>
+                        <input type="email" id="login-email" placeholder="Enter your email" required>
+                        <label for="login-password">Password:</label>
+                        <input type="password" id="login-password" placeholder="Enter your password" required>
+                        <button type="submit" class="btn btn-primary">Login</button>
+                    </form>
+                    <p>Don't have an account? <a href="javascript:void(0);" onclick="showSignup()">Sign Up</a></p>
+                </div>
             </div>
-            <div class="icon-box animate-slide">
-                <i class="fas fa-file-alt"></i>
-                <p>Submit Documents Effortlessly</p>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="container">
+                <h2 class="animate-fade">About Us</h2>
+                <p>SmartApp Connect is your trusted partner in simplifying application processes for universities, jobs, and other online services. We aim to make every step of your application journey seamless and stress-free.</p>
+
+                <div class="icon-grid">
+                    <div class="icon-box animate-slide">
+                        <i class="fas fa-users"></i>
+                        <p>Connect with Experts</p>
+                    </div>
+                    <div class="icon-box animate-slide">
+                        <i class="fas fa-file-alt"></i>
+                        <p>Submit Documents Effortlessly</p>
+                    </div>
+                    <div class="icon-box animate-slide">
+                        <i class="fas fa-calendar-check"></i>
+                        <p>Stay Updated</p>
+                    </div>
+                </div>
+                
+                <!-- Video Section in About -->
+                <div class="video-container">
+                    <video width="100%" controls>
+                        <source src="about-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
             </div>
-            <div class="icon-box animate-slide">
-                <i class="fas fa-calendar-check"></i>
-                <p>Stay Updated</p>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="services">
+            <div class="container">
+                <h2 class="animate-fade">Our Services</h2>
+
+                <!-- Image Slider -->
+                <div class="slider">
+                    <img class="slide fade" src="service1.jpg" alt="Job Applications">
+                    <img class="slide fade" src="service2.jpg" alt="University Applications">
+                    <img class="slide fade" src="service3.jpg" alt="Document Upload">
+                </div>
+
+                <div class="service-grid">
+                    <div class="service-item animate-slide">
+                        <i class="fas fa-briefcase"></i>
+                        <h3>Job Applications</h3>
+                        <p>Submit your job applications with ease.</p>
+                    </div>
+                    <div class="service-item animate-slide">
+                        <i class="fas fa-university"></i>
+                        <h3>University Applications</h3>
+                        <p>We handle your university applications smoothly.</p>
+                    </div>
+                    <div class="service-item animate-slide">
+                        <i class="fas fa-file-upload"></i>
+                        <h3>Document Upload</h3>
+                        <p>Easily upload your documents and track your applications.</p>
+                    </div>
+                </div>
+
+                <!-- Video Section in Services -->
+                <div class="video-container">
+                    <video width="100%" controls>
+                        <source src="services-video.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
             </div>
-        </div>
-    </div>
-</section>
+        </section>
 
- <!-- Services Section -->
- <section id="services" class="services">
-    <div class="container">
-        <h2 class="animate-fade">Our Services</h2>
-        <div class="service-grid">
-            <div class="service-item animate-slide">
-                <i class="fas fa-briefcase"></i>
-                <h3>Job Applications</h3>
-                <p>Submit your job applications with ease.</p>
+        <!-- Opportunities Section -->
+        <section id="opportunities" class="opportunities">
+            <div class="container">
+                <h2 class="animate-fade">Opportunities</h2>
+                <p>Explore various opportunities in the academic and professional fields.</p>
+
+                <!-- Image Slider -->
+                <div class="slider">
+                    <img class="slide fade" src="job.jpg" alt="Job Vacancies">
+                    <img class="slide fade" src="scholarship.jpg" alt="Scholarships">
+                </div>
+
+                <div class="opportunity-cards">
+                    <div class="card animate-slide">
+                        <img src="job.jpg" alt="Job" class="opportunity-img">
+                        <h3>Job Vacancies</h3>
+                        <p>Find the best job opportunities available in your area.</p>
+                    </div>
+                    <div class="card animate-slide">
+                        <img src="scholarship.jpg" alt="Scholarship" class="opportunity-img">
+                        <h3>Scholarships</h3>
+                        <p>Discover scholarships that will help you continue your education.</p>
+                    </div>
+                </div>
             </div>
-            <div class="service-item animate-slide">
-                <i class="fas fa-university"></i>
-                <h3>University Applications</h3>
-                <p>We handle your university applications smoothly.</p>
+        </section>
+
+        <!-- Pending Opportunities Section -->
+        <section id="opportunities" class="opportunities">
+            <div class="container">
+                <h2>Pending Opportunities</h2>
+                <ul>
+                    <li>University X Application Deadline: November 30</li>
+                    <li>Company Y Internship Deadline: December 15</li>
+                    <li>Scholarship Z Deadline: January 10</li>
+                </ul>
             </div>
-            <div class="service-item animate-slide">
-                <i class="fas fa-file-upload"></i>
-                <h3>Document Upload</h3>
-                <p>Easily upload your documents and track your applications.</p>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2 class="animate-fade">Contact Me</h2>
+                <p>If you have any questions, feel free to get in touch with Me.</p>
+                <div class="contact-info animate-slide">
+                    <i class="fas fa-phone"></i>
+                    <p>+25 0787846344</p>
+                </div>
+                <div class="contact-info animate-slide">
+                    <i class="fas fa-envelope"></i>
+                    <p>info@smartapp.com</p>
+                </div>
             </div>
-        </div>
-    </div>
-</section>
-
-<!-- Signup Section -->
-<section id="signup-section" class="hidden">
-    <div class="container">
-        <h2>Sign Up</h2>
-        <form id="signup-form">
-            <label for="signup-name">Name:</label>
-            <input type="text" id="signup-name" placeholder="Your Name" required>
-
-            <label for="signup-email">Email:</label>
-            <input type="email" id="signup-email" placeholder="Your Email" required>
-
-            <label for="signup-password">Password:</label>
-            <input type="password" id="signup-password" placeholder="Your Password" required>
-
-            <button type="button" class="btn btn-primary" onclick="signup()">Sign Up</button>
-            <p>Already have an account? <a href="#" onclick="showLogin()">Log In</a></p>
-        </form>
-    </div>
-</section>
-
-<!-- Login Section -->
-<section id="login-section" class="hidden">
-    <div class="container">
-        <h2>Log In</h2>
-        <form id="login-form">
-            <label for="login-email">Email:</label>
-            <input type="email" id="login-email" placeholder="Your Email" required>
-
-            <label for="login-password">Password:</label>
-            <input type="password" id="login-password" placeholder="Your Password" required>
-
-            <button type="button" class="btn btn-primary" onclick="login()">Log In</button>
-            <p>Don't have an account? <a href="#" onclick="showSignup()">Sign Up</a></p>
-        </form>
-    </div>
-</section>
-
-
-<!-- Opportunities Section -->
-<section id="opportunities" class="opportunities">
-    <div class="container">
-        <h2 class="animate-fade">Opportunities</h2>
-        <p>Explore various opportunities in the academic and professional fields.</p>
-        <div class="opportunity-cards">
-            <div class="card animate-slide">
-                <img src="job.jpg" alt="Job" class="opportunity-img">
-                <h3>Job Vacancies</h3>
-                <p>Find the best job opportunities available in your area.</p>
+            <div class="container-form">
+                <h2>Contact Me via to Fill this Form</h2>
+                <form>
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" placeholder="Your Name" required>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" placeholder="Your Email" required>
+                    <label for="phone">Phone Number:</label>
+                    <input type="tel" id="phone" placeholder="Your Phone Number" required>
+                    <label for="message">Message:</label>
+                    <textarea id="message" rows="5" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
             </div>
-            <div class="card animate-slide">
-                <img src="scholarship.jpg" alt="Scholarship" class="opportunity-img">
-                <h3>Scholarships</h3>
-                <p>Discover scholarships that will help you continue your education.</p>
-            </div>
-        </div>
-    </div>
-</section>
-
-    <!-- Opportunities Section -->
-    <section id="opportunities" class="opportunities">
-        <div class="container">
-            <h2>Pending Opportunities</h2>
-            <ul>
-                <li>University X Application Deadline: November 30</li>
-                <li>Company Y Internship Deadline: December 15</li>
-                <li>Scholarship Z Deadline: January 10</li>
-            </ul>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-<section id="contact" class="contact">
-    <div class="container">
-        <h2 class="animate-fade">Contact Me</h2>
-        <p>If you have any questions, feel free to get in touch with Me.</p>
-        <div class="contact-info animate-slide">
-            <i class="fas fa-phone"></i>
-            <p>+25 0787846344</p>
-        </div>
-        <div class="contact-info animate-slide">
-            <i class="fas fa-envelope"></i>
-            <p>info@smartapp.com</p>
-        </div>
-    </div>
-    <div class="container-form">
-        <h2>Contact Me via to Fill this Form</h2>
-        <form>
-            <label for="name">Name:</label>
-            <input type="text" id="name" placeholder="Your Name" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" placeholder="Your Email" required>
-            <label for="phone">Phone Number:</label>
-            <input type="tel" id="phone" placeholder="Your Phone Number" required>
-            <label for="message">Message:</label>
-            <textarea id="message" rows="5" placeholder="Your Message"></textarea>
-            <button type="submit" class="btn btn-primary">Send Message</button>
-        </form>
-</section>
-
-        <!-- Additional Content (About, Services, Opportunities, Contact) -->
-        <!-- Include other sections here as they are in your existing file -->
-
+        </section>
     </main>
 
     <!-- Footer -->
@@ -225,8 +246,8 @@
     </footer>
 
     <script>
-       // Dark Mode Toggle
-       const themeToggle = document.getElementById('themeToggle');
+        // Dark Mode Toggle
+        const themeToggle = document.getElementById('themeToggle');
         themeToggle.addEventListener('click', () => {
             document.body.classList.toggle('dark-theme');
             const icon = themeToggle.querySelector('i');
@@ -246,6 +267,25 @@
 
         function scrollToTop() {
             window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Show Sign Up Form
+        function showSignup() {
+            document.getElementById('signup-form').style.display = 'block';
+            document.getElementById('login-form').style.display = 'none';
+            document.getElementById('auth-header').innerText = 'Sign Up';
+        }
+
+        // Show Login Form
+        function showLogin() {
+            document.getElementById('signup-form').style.display = 'none';
+            document.getElementById('login-form').style.display = 'block';
+            document.getElementById('auth-header').innerText = 'Login';
+        }
+
+        // Show Signup Section
+        function showSignupForm() {
+            document.getElementById('auth-section').style.display = 'block';
         }
     </script>
 </body>
