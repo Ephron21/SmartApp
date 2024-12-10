@@ -51,51 +51,121 @@
                     <h1 class="animate-fade">Simplify Your Applications</h1>
                     <p class="animate-slide">Get the latest updates, send your documents, and let us handle the rest!</p>
                     <div class="hero-buttons">
-                        <a href="#about" class="btn">Learn More</a>
-                        <button class="btn btn-primary" onclick="showSignupForm()">Get Started</button>
+                        <!-- Buttons -->
+                        <button class="btn-primary" onclick="showAuthSection()">Get Started</button>
+                        <button onclick="showLearnMore()">Learn More</button>
+                        <button onclick="showOtherAction()">Other Action</button>
+
                     </div>
                 </div>
             </div>
         </header>
 
+<!-- Learn More Section -->
+<section id="learn-more-section" style="display: none; margin-top: 20px;">
+    <h2>About My Website</h2>
+    <p>Welcome to our platform! Explore how we connect users to amazing features, empowering creativity and productivity.</p>
+    <video controls autoplay muted style="width: 100%; border-radius: 10px; margin-top: 20px;">
+        <source src="your-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+</section>
+
+<!-- Image Slider -->
+<div id="slider" style="display: none; margin-top: 20px; position: relative; overflow: hidden; border-radius: 10px;">
+    <div id="slider-images" style="display: flex; transition: transform 0.5s ease-in-out;">
+        <img src="image1.jpg" alt="Image 1" style="width: 100%; height: auto;">
+        <img src="image2.jpg" alt="Image 2" style="width: 100%; height: auto;">
+        <img src="image3.jpg" alt="Image 3" style="width: 100%; height: auto;">
+    </div>
+    <button id="prev-btn" class="slider-btn" style="left: 10px;">&#9664;</button>
+    <button id="next-btn" class="slider-btn" style="right: 10px;">&#9654;</button>
+</div>
+
+<!-- Educational Resources Section -->
+<section id="other-action-section" style="display: none; margin-top: 20px;">
+    <h2>Educational Resources</h2>
+    <p>Explore our collection of past exam papers, subject-specific books, and other educational materials to enhance your learning journey.</p>
+
+    <!-- Resources List for Users -->
+    <div id="resources-list" style="margin-top: 20px;">
+        <ul id="resource-items">
+            <!-- Dynamically populated for user view -->
+        </ul>
+    </div>
+
+    <!-- Admin-Only Section -->
+    <div id="admin-controls" style="display: none; margin-top: 30px; border-top: 1px solid #ddd; padding-top: 20px;">
+        <h3>Admin Dashboard</h3>
+        <p>Upload educational resources and manage download requests.</p>
+
+        <!-- File Upload Form -->
+        <form id="upload-form">
+            <label for="file-title">File Title:</label>
+            <input type="text" id="file-title" placeholder="Enter file title" required>
+            <label for="file-upload">Upload File:</label>
+            <input type="file" id="file-upload" required>
+            <button type="button" onclick="uploadFile()">Upload File</button>
+        </form>
+
+        <!-- Uploaded Files List for Admin -->
+        <h4 style="margin-top: 20px;">Uploaded Files:</h4>
+        <ul id="admin-uploaded-files">
+            <!-- Populated dynamically -->
+        </ul>
+
+        <!-- Pending Download Requests -->
+        <h4 style="margin-top: 20px;">Pending Download Requests:</h4>
+        <ul id="pending-requests">
+            <!-- Populated dynamically -->
+        </ul>
+    </div>
+</section>
+
+
+
         <!-- Signup/Login Section (hidden initially) -->
-        <section id="auth-section" class="auth-section" style="display: none;">
-            <div class="container">
-                <h2 id="auth-header">Sign Up</h2>
-                
-                <!-- Signup Form -->
-                <div id="signup-form">
-                    <form action="#" method="POST">
-                        <label for="username">Username:</label>
-                        <input type="text" id="username" placeholder="Enter your username" required>
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" placeholder="Enter your email" required>
-                        <label for="password">Password:</label>
-                        <input type="password" id="password" placeholder="Enter your password" required>
-                        <button type="submit" class="btn btn-primary">Sign Up</button>
-                    </form>
-                    <p>Already have an account? <a href="javascript:void(0);" onclick="showLogin()">Login</a></p>
-                </div>
-                
-                <!-- Login Form (hidden by default) -->
-                <div id="login-form" style="display: none;">
-                    <form action="#" method="POST">
-                        <label for="login-email">Email:</label>
-                        <input type="email" id="login-email" placeholder="Enter your email" required>
-                        <label for="login-password">Password:</label>
-                        <input type="password" id="login-password" placeholder="Enter your password" required>
-                        <button type="submit" class="btn btn-primary">Login</button>
-                    </form>
-                    <p>Don't have an account? <a href="javascript:void(0);" onclick="showSignup()">Sign Up</a></p>
-                </div>
-            </div>
-        </section>
+<section id="auth-section" class="auth-section" style="display: none;">
+    <div class="container">
+        <h2 id="auth-header">Sign Up</h2>
+        
+        <!-- Signup Form -->
+        <div id="signup-form">
+            <form action="#" method="POST">
+                <label for="username">Username:</label>
+                <input type="text" id="username" placeholder="Enter your username" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+                <label for="password">Password:</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+                <button type="submit" class="btn btn-primary">Sign Up</button>
+            </form>
+            <p>Already have an account? <a href="javascript:void(0);" onclick="showLogin()">Login</a></p>
+        </div>
+        
+        <!-- Login Form (hidden by default) -->
+        <div id="login-form" style="display: none;">
+            <form action="#" method="POST">
+                <label for="login-email">Email:</label>
+                <input type="email" id="login-email" placeholder="Enter your email" required>
+                <label for="login-password">Password:</label>
+                <input type="password" id="login-password" placeholder="Enter your password" required>
+                <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+            <p>Don't have an account? <a href="javascript:void(0);" onclick="showSignup()">Sign Up</a></p>
+        </div>
+    </div>
+</section>
+
+
+
 
         <!-- About Section -->
         <section id="about" class="about">
             <div class="container">
                 <h2 class="animate-fade">About Us</h2>
-                <p>SmartApp Connect is your trusted partner in simplifying application processes for universities, jobs, and other online services. We aim to make every step of your application journey seamless and stress-free.</p>
+                <p>SmartApp Connect is your trusted partner in simplifying application processes for universities, jobs, and other online services.
+                     We aim to make every step of your application journey seamless and stress-free.</p>
 
                 <div class="icon-grid">
                     <div class="icon-box animate-slide">
@@ -129,9 +199,9 @@
 
                 <!-- Image Slider -->
                 <div class="slider">
-                    <img class="slide fade" src="service1.jpg" alt="Job Applications">
-                    <img class="slide fade" src="service2.jpg" alt="University Applications">
-                    <img class="slide fade" src="service3.jpg" alt="Document Upload">
+                    <img class="slide fade" src="mifotra.png" alt="Job Applications">
+                    <img class="slide fade" src="Cur.png" alt="University Applications">
+                    <img class="slide fade" src="ur.png" alt="Document Upload">
                 </div>
 
                 <div class="service-grid">
@@ -170,18 +240,22 @@
 
                 <!-- Image Slider -->
                 <div class="slider">
-                    <img class="slide fade" src="job.jpg" alt="Job Vacancies">
-                    <img class="slide fade" src="scholarship.jpg" alt="Scholarships">
+                    <img class="slide fade" src="mifotra.png" alt="Job Vacancies">
+                    <img class="slide fade" src="Cur.png" alt="Scholarships">
                 </div>
 
                 <div class="opportunity-cards">
                     <div class="card animate-slide">
-                        <img src="job.jpg" alt="Job" class="opportunity-img">
+                        <img src="mifotra.png" alt="Job" class="opportunity-img">
                         <h3>Job Vacancies</h3>
                         <p>Find the best job opportunities available in your area.</p>
                     </div>
                     <div class="card animate-slide">
-                        <img src="scholarship.jpg" alt="Scholarship" class="opportunity-img">
+                        <img src="Cur.png" alt="Scholarship" class="opportunity-img">
+                        <h3>Scholarships</h3>
+                        <img src="ur.png" alt="Scholarship" class="opportunity-img">
+                        <h3>Scholarships</h3>
+                        <img src="rp.png" alt="Scholarship" class="opportunity-img">
                         <h3>Scholarships</h3>
                         <p>Discover scholarships that will help you continue your education.</p>
                     </div>
@@ -194,9 +268,9 @@
             <div class="container">
                 <h2>Pending Opportunities</h2>
                 <ul>
-                    <li>University X Application Deadline: November 30</li>
-                    <li>Company Y Internship Deadline: December 15</li>
-                    <li>Scholarship Z Deadline: January 10</li>
+                    <li>EAUR Application Deadline: December 21</li>
+                    <li>CUR Deadline: December 15</li>
+                    <li>Kepler college Deadline: January 10</li>
                 </ul>
             </div>
         </section>
@@ -209,6 +283,8 @@
                 <div class="contact-info animate-slide">
                     <i class="fas fa-phone"></i>
                     <p>+25 0787846344</p>
+                    <i class="fas fa-phone"></i>
+                    <p>+25 0734733221</p>
                 </div>
                 <div class="contact-info animate-slide">
                     <i class="fas fa-envelope"></i>
@@ -235,8 +311,8 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="social-icons">
-            <a href="https://wa.me/" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-            <a href="https://linkedin.com" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="https://chat.whatsapp.com/BDEAa9Knxs7J3SCarkhvvE" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.linkedin.com/in/ephron-tuyishime-0b0b3933a/" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
             <a href="https://twitter.com" target="_blank" title="Twitter"><i class="fab fa-twitter"></i></a>
             <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
         </div>
@@ -244,50 +320,7 @@
             <p>&copy; 2024 SmartApp Connect. All rights reserved.</p>
         </div>
     </footer>
-
-    <script>
-        // Dark Mode Toggle
-        const themeToggle = document.getElementById('themeToggle');
-        themeToggle.addEventListener('click', () => {
-            document.body.classList.toggle('dark-theme');
-            const icon = themeToggle.querySelector('i');
-            icon.classList.toggle('fa-moon');
-            icon.classList.toggle('fa-sun');
-        });
-
-        // Scroll to Top Button
-        const scrollTopButton = document.querySelector('.scroll-top');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 200) {
-                scrollTopButton.style.display = 'block';
-            } else {
-                scrollTopButton.style.display = 'none';
-            }
-        });
-
-        function scrollToTop() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-
-        // Show Sign Up Form
-        function showSignup() {
-            document.getElementById('signup-form').style.display = 'block';
-            document.getElementById('login-form').style.display = 'none';
-            document.getElementById('auth-header').innerText = 'Sign Up';
-        }
-
-        // Show Login Form
-        function showLogin() {
-            document.getElementById('signup-form').style.display = 'none';
-            document.getElementById('login-form').style.display = 'block';
-            document.getElementById('auth-header').innerText = 'Login';
-        }
-
-        // Show Signup Section
-        function showSignupForm() {
-            document.getElementById('auth-section').style.display = 'block';
-        }
-    </script>
+<script src="script.js"></script>
 </body>
 
 </html>
